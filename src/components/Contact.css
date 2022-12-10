@@ -1,0 +1,8 @@
+.editor {
+  /* background-color: red; */
+  padding: 1px 3px;
+  cursor: pointer;
+}
+.editor:hover {
+  background-color: rgb(206, 199, 199);
+}
