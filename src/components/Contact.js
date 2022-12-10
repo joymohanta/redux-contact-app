@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HiPencil, HiTrash } from "react-icons/hi";
 import { deleteContact } from "../redux/contactListApp/actions/ActionFile";
 
-const Contact = () => {
+const Contact = ({ handleEditField, editInputField }) => {
   const dispatch = useDispatch();
   const contacts = useSelector((state) => state.operationsReducer);
   console.log(contacts);
@@ -19,11 +19,18 @@ const Contact = () => {
               {contact.email}
             </p>
             <span>
-              <HiPencil className="fs-4 me-3 editor" />
-              <HiTrash
-                onClick={() => dispatch(deleteContact(contact.id))}
-                className="fs-4 me-3 editor"
-              />
+              {editInputField === false && (
+                <>
+                  <HiPencil
+                    onClick={() => handleEditField(contact)}
+                    className="fs-4 me-3 editor"
+                  />
+                  <HiTrash
+                    onClick={() => dispatch(deleteContact(contact.id))}
+                    className="fs-4 me-3 editor"
+                  />
+                </>
+              )}
             </span>
           </div>
         </div>

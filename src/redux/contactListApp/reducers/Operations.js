@@ -1,10 +1,13 @@
-import { ADD_CONTACT, DELETE_CONTACT } from "../actions/ActionFile";
+import {
+  ADD_CONTACT,
+  DELETE_CONTACT,
+  UPDATE_CONTACT,
+} from "../actions/ActionFile";
 
 const initialState = [
   { id: 1, name: "Joy Mohanta", email: "joy@gmail.com" },
   { id: 2, name: "Roy Raju", email: "roy@gmail.com" },
   { id: 3, name: "Anu Sing", email: "anu@yahoo.com" },
-  { id: 4, name: "Rifat Roy", email: "rifat@gmail.com" },
 ];
 
 export const operationsReducer = (state = initialState, action) => {
@@ -16,6 +19,18 @@ export const operationsReducer = (state = initialState, action) => {
         (contact) => contact.id !== action.payload
       );
       return filteredContact;
+    case UPDATE_CONTACT:
+      let data = action.payload;
+      const updatedArray = [];
+      state.map((item) => {
+        if (item.id === data.id) {
+          item.id = data.id;
+          item.name = data.name;
+          item.email = data.email;
+        }
+        updatedArray.push(item);
+      });
+      return updatedArray;
     default:
       return state;
   }
