@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Redux Contact List
+
+Live url: [https://hilarious-meerkat-b81630.netlify.app/]
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
