@@ -1,9 +1,11 @@
 import React from "react";
 import "./Contact.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { HiPencil, HiTrash } from "react-icons/hi";
+import { deleteContact } from "../redux/contactListApp/actions/ActionFile";
 
 const Contact = () => {
+  const dispatch = useDispatch();
   const contacts = useSelector((state) => state.operationsReducer);
   console.log(contacts);
   return (
@@ -18,7 +20,10 @@ const Contact = () => {
             </p>
             <span>
               <HiPencil className="fs-4 me-3 editor" />
-              <HiTrash className="fs-4 me-3 editor" />
+              <HiTrash
+                onClick={() => dispatch(deleteContact(contact.id))}
+                className="fs-4 me-3 editor"
+              />
             </span>
           </div>
         </div>
